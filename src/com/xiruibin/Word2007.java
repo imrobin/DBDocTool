@@ -268,6 +268,7 @@ public final class Word2007 {
 		cell.setColor(bgcolor);
 		cell.setVerticalAlignment(XWPFVertAlign.CENTER);
 		cell.setText(text);
+		cell.getCTTc().getPList().get(0).addNewPPr().addNewJc().setVal(STJc.LEFT);
 	}
 
 	/**

@@ -102,8 +102,12 @@ public final class DBUtils {
 				}
 
 				String typeName = rsc.getString("TYPE_NAME");
-				if ("CHAR".equals(typeName) || "VARCHAR".equals(typeName)) {
+				if ("VARCHAR".equals(typeName) || "CHAR".equals(typeName)) {
 					columnInfo.put("column_type", typeName + "(" + rsc.getString("COLUMN_SIZE") + ")");
+				} else if ("INT".equals(typeName) || "INTEGER".equals(typeName) || "BIGINT".equals(typeName) || "TINYINT".equals(typeName) || "SMALLINT".equals(typeName) || "MEDIUMINT".equals(typeName)) {
+					columnInfo.put("column_type", typeName + "(" + rsc.getString("COLUMN_SIZE") + ")");
+				} else if ("DECIMAL".equals(typeName) || "FLOAT".equals(typeName) || "DOUBLE".equals(typeName) || "NUMERIC".equals(typeName)) {
+					columnInfo.put("column_type", typeName + "(" + rsc.getString("COLUMN_SIZE") + "," + rsc.getInt("DECIMAL_DIGITS") + ")");
 				} else {
 					columnInfo.put("column_type", typeName);
 				}
