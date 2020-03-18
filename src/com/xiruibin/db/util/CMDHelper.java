@@ -67,6 +67,10 @@ public final class CMDHelper {
 				parameter.setPort(cmds[i + 1]);
 			} else if (cmds[i].equals("--path")) {
 				parameter.setPath(resolvePath(cmds[i + 1]));
+			} else if (cmds[i].equals("--title")) {
+				parameter.setTitle(cmds[i + 1]);
+			} else if (cmds[i].equals("--creator")) {
+				parameter.setCreator(cmds[i + 1]);
 			} else {
 				Log.severe(cmds[i] + "is Illegal parameters!");
 				CMDHelper.printCmdHelp();

@@ -36,14 +36,17 @@ public class CMDTool {
 		}
 
 		DBUtils dbUtils = new DBUtils(parameters);
-
 		long startTime = System.currentTimeMillis();
-
-		Map<String, LinkedHashMap<String, LinkedHashMap<String, String>>> data = dbUtils.getDatabaseInfo();
-
+		dbUtils.load();
+		Map<String, LinkedHashMap<String, LinkedHashMap<String, String>>> dbInfo = dbUtils.getDatabaseInfo();
 		Map<String, String> tableinfo = dbUtils.getTableInfo();
-
-		Word2007.productWordForm(tableinfo, data, parameters);
+		Log.info("update log:" + dbUtils.compare());
+		dbUtils.writeCache();
+		
+		Word2007 word = new Word2007();
+		word.setTableinfo(tableinfo);
+		word.setData(dbInfo);
+		word.productWordForm(parameters);
 
 		long endTime = System.currentTimeMillis();
 		Log.info("总共用时:" + (endTime - startTime) + "ms");

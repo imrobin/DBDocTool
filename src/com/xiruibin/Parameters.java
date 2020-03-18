@@ -15,6 +15,9 @@ public final class Parameters {
 	private String schema;
 	private List<String> tables = new ArrayList<String>();
 	private String path = "";
+	
+	private String creator;
+	private String title;
 
 	public Parameters() {
 	}
@@ -112,6 +115,22 @@ public final class Parameters {
 		if (StringUtils.hasLength(path)) {
 			this.path = path;
 		}
+	}
+
+	public String getCreator() {
+		return creator;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setCreator(String creator) {
+		this.creator = creator;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 }
